@@ -1,18 +1,56 @@
-using System.Collections;
-using System.Collections.Generic;
+using MiniGameCollection;
+using System;
 using UnityEngine;
 
-public class ScoreKeeper : MonoBehaviour
+namespace MiniGameCollection.Games2025.Team05
 {
-    // Start is called before the first frame update
-    void Start()
+    public class ScoreKeeper : MiniGameBehaviour
     {
-        
-    }
+        [field: SerializeField] public MiniGameScoreUI MiniGameScoreUI { get; private set; }
+        [field: SerializeField] public int P1Score { get; private set; }
+        [field: SerializeField] public int P2Score { get; private set; }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public delegate void ScoreUpdate(PlayerID playerID, int score);
+        public event ScoreUpdate OnScoreUpdate;
+
+        protected override void OnGameEnd()
+        {
+            // Set winner to proper case
+            if (P1Score == P2Score)
+            {
+                MiniGameManager.Winner = MiniGameWinner.Draw;
+            }
+            else if (P1Score > P2Score)
+            {
+                MiniGameManager.Winner = MiniGameWinner.Player1;
+            }
+            else if (P1Score < P2Score)
+            {
+                MiniGameManager.Winner = MiniGameWinner.Player2;
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }  
+        }
+
+        private void UpdateScores()
+        {
+            MiniGameScoreUI.SetPlayerScore(1, P1Score);
+            MiniGameScoreUI.SetPlayerScore(2, P2Score);
+        }
+
+        public void AddScore(PlayerID playerID, int score)
+        {
+            switch (playerID)
+            {
+                case PlayerID.Player1: P1Score += score; break;
+                case PlayerID.Player2: P2Score += score; break;
+                default: throw new NotImplementedException();
+            }
+            UpdateScores();
+            OnScoreUpdate?.Invoke(playerID, score);
+        }
     }
 }
+

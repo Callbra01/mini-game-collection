@@ -1,0 +1,8 @@
+namespace MiniGameCollection.Games2025.Team05
+{
+    public enum PlayerID
+    {
+        Player1 = 0,
+        Player2 = 1,
+    }
+}
