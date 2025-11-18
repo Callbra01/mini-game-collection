@@ -84,7 +84,11 @@ namespace MiniGameCollection.Games2025.Team05
                 }
             }
             else
-            { 
+            {
+                // Check first sprite renderer for enabled var, since all sprite renderers should be toggled together
+                if (spriteRenderers[0].enabled != true)
+                    SetSpriteRenderersEnabled(true);
+
                 this.GetComponent<BoxCollider2D>().enabled = true;
                 hitTimer = 0;
             }
