@@ -79,7 +79,7 @@ namespace MiniGameCollection.Games2025.Team05
                 canMove = true;
             }
 
-            ScoreKeeper.instance.AddScore(this.PlayerID, 10);
+            ScoreKeeper.instance.AddScore(this.PlayerID, 1);
         }
 
         // Hit timer for flashing player sprite, as well as disabling player collision
@@ -148,6 +148,7 @@ namespace MiniGameCollection.Games2025.Team05
             if (collision.gameObject.GetComponent<TagScorebar>() != null)
             {
                 Component component = collision.gameObject.GetComponent<TagScorebar>();
+                ScoreKeeper.AddScore(this.PlayerID, 500);
 
             }
         }
