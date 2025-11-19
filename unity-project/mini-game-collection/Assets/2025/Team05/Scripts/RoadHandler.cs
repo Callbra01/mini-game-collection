@@ -20,6 +20,15 @@ namespace MiniGameCollection.Games2025.Team05
             if (GameManager.State != MiniGameManagerState.TimerRunning)
                 return;
 
+            if (movingRight)
+            {
+                if (this.transform.position.y <= resetOffset)
+                    this.transform.position = Vector3.zero;
+
+                this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + moveSpeed * Time.deltaTime, this.transform.position.z);
+                return;
+            }
+
             if (this.transform.position.y >= resetOffset)
                 this.transform.position = Vector3.zero;
 
