@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: 1dc216428a52b064e8da9b6a991a60f9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -156,7 +156,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 5
   m_Sprite: {fileID: 1629447523, guid: 04be792150cf58041846f91f4cebdcc4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -237,7 +237,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.44019008, y: 0.05659589}
+  m_Offset: {x: -0.06919122, y: 0.05659589}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -248,7 +248,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.3269982, y: 0.8868082}
+  m_Size: {x: 0.30823565, y: 0.8868082}
   m_EdgeRadius: 0
 --- !u!50 &7130472834096603746
 Rigidbody2D:
@@ -292,6 +292,8 @@ MonoBehaviour:
   <PlayerID>k__BackingField: 0
   <Rigidbody2D>k__BackingField: {fileID: 7130472834096603746}
   <PlayerMoveSpeed>k__BackingField: 20
+  <ScoreKeeper>k__BackingField: {fileID: 0}
+  <GameManager>k__BackingField: {fileID: 0}
 --- !u!114 &4835741572833758949
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1008,6 +1008,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &828410408
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 828410409}
+  m_Layer: 0
+  m_Name: ObstacleStack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &828410409
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828410408}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1182851667}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &896459394
 GameObject:
   m_ObjectHideFlags: 0
@@ -2679,6 +2710,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1182851667}
+  - component: {fileID: 1182851668}
   m_Layer: 0
   m_Name: ObstacleManager
   m_TagString: Untagged
@@ -2702,8 +2734,32 @@ Transform:
   - {fileID: 454365215}
   - {fileID: 2040180628}
   - {fileID: 1687593771}
+  - {fileID: 828410409}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1182851668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182851666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f1d2ed8b41ea0e479134d8f25f56357, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lowWallPrefab: {fileID: 2098747627053360879, guid: 289a97a9831123d4cac04664d9fba9d5,
+    type: 3}
+  midWallPrefab: {fileID: 2098747627053360879, guid: 4fd74cc7a8854ff449e55c4b4aac1b57,
+    type: 3}
+  highWallPrefab: {fileID: 2098747627053360879, guid: 23b3e150918e6564eb8b03c67354ef96,
+    type: 3}
+  highSpawn: {fileID: 1687593771}
+  midSpawn: {fileID: 2040180628}
+  lowSpawn: {fileID: 454365215}
+  obstacleParent: {fileID: 828410409}
+  obstacles: []
 --- !u!1 &1312295800
 GameObject:
   m_ObjectHideFlags: 0
@@ -5637,6 +5693,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1001555291}
     m_Modifications:
+    - target: {fileID: 2238694670792640211, guid: 6911a481a18951f4c92b772aceb8d995,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 3418202584476186224, guid: 6911a481a18951f4c92b772aceb8d995,
         type: 3}
       propertyPath: m_Size.x
@@ -5662,6 +5723,11 @@ PrefabInstance:
       propertyPath: <ScoreKeeper>k__BackingField
       value: 
       objectReference: {fileID: 243674066}
+    - target: {fileID: 6209882896708870731, guid: 6911a481a18951f4c92b772aceb8d995,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8038362299684736418, guid: 6911a481a18951f4c92b772aceb8d995,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5740,6 +5806,11 @@ PrefabInstance:
       propertyPath: <ScoreKeeper>k__BackingField
       value: 
       objectReference: {fileID: 243674066}
+    - target: {fileID: 3827311758247485726, guid: 19c65769be29ade47b384d37ad3d94f7,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4820902481064425025, guid: 19c65769be29ade47b384d37ad3d94f7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5789,6 +5860,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7837774515151304504, guid: 19c65769be29ade47b384d37ad3d94f7,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

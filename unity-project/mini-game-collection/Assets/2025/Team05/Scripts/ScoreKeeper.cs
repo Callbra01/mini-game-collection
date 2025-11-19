@@ -55,5 +55,17 @@ namespace MiniGameCollection.Games2025.Team05
             UpdateScores();
             OnScoreUpdate?.Invoke(playerID, score);
         }
+
+        public void RemoveScore(PlayerID playerID, int score)
+        {
+            switch (playerID)
+            {
+                case PlayerID.Player1: P1Score -= score; break;
+                case PlayerID.Player2: P2Score -= score; break;
+                default: throw new NotImplementedException();
+            }
+            UpdateScores();
+            OnScoreUpdate?.Invoke(playerID, score);
+        }
     }
 }

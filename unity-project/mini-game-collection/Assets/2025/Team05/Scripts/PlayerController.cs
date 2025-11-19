@@ -143,6 +143,8 @@ namespace MiniGameCollection.Games2025.Team05
 
                 if (!isHitTimerActive)
                     isHitTimerActive = true;
+
+                ScoreKeeper.instance.RemoveScore(this.PlayerID, 1000);
             }
 
             if (collision.gameObject.GetComponent<TagScorebar>() != null)
