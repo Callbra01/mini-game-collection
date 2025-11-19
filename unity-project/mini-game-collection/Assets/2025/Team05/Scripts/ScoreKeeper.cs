@@ -1,4 +1,3 @@
-using MiniGameCollection;
 using System;
 using UnityEngine;
 
@@ -6,6 +5,8 @@ namespace MiniGameCollection.Games2025.Team05
 {
     public class ScoreKeeper : MiniGameBehaviour
     {
+        public static ScoreKeeper instance { get; private set; }
+
         [field: SerializeField] public MiniGameScoreUI MiniGameScoreUI { get; private set; }
         [field: SerializeField] public int P1Score { get; private set; }
         [field: SerializeField] public int P2Score { get; private set; }
@@ -13,25 +14,28 @@ namespace MiniGameCollection.Games2025.Team05
         public delegate void ScoreUpdate(PlayerID playerID, int score);
         public event ScoreUpdate OnScoreUpdate;
 
-        protected override void OnGameEnd()
+        private void Awake()
         {
-            // Set winner to proper case
-            if (P1Score == P2Score)
+            if (instance != null && instance != this)
             {
-                MiniGameManager.Winner = MiniGameWinner.Draw;
-            }
-            else if (P1Score > P2Score)
-            {
-                MiniGameManager.Winner = MiniGameWinner.Player1;
-            }
-            else if (P1Score < P2Score)
-            {
-                MiniGameManager.Winner = MiniGameWinner.Player2;
+                Destroy(this.gameObject);
             }
             else
             {
+                instance = this;
+            }
+        }
+
+        protected override void OnGameEnd()
+        {
+            if (P1Score == P2Score)
+                MiniGameManager.Winner = MiniGameWinner.Draw;
+            else if (P1Score > P2Score)
+                MiniGameManager.Winner = MiniGameWinner.Player1;
+            else if (P1Score < P2Score)
+                MiniGameManager.Winner = MiniGameWinner.Player2;
+            else
                 throw new NotImplementedException();
-            }  
         }
 
         private void UpdateScores()
@@ -53,4 +57,3 @@ namespace MiniGameCollection.Games2025.Team05
         }
     }
 }
-

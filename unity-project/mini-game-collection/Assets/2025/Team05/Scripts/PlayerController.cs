@@ -10,10 +10,14 @@ namespace MiniGameCollection.Games2025.Team05
         [field: SerializeField] public PlayerID PlayerID { get; private set; }
         [field: SerializeField] public Rigidbody2D Rigidbody2D { get; private set; }
         [field: SerializeField] public float PlayerMoveSpeed { get; private set; } = 20f;
+        [field: SerializeField] public ScoreKeeper ScoreKeeper { get; private set; }
+        [field: SerializeField] public MiniGameManager GameManager { get; private set; }
 
         private bool isHitTimerActive = false;
         private float hitTimer = 0;
         private float hitTimerMax = 2.0f;
+
+        private bool canMove = false;
 
         private SpriteRenderer[] spriteRenderers;
 
@@ -53,11 +57,29 @@ namespace MiniGameCollection.Games2025.Team05
                 newPosition.y = Mathf.Clamp(newPosition.y, -2.988448f, 0.0f);
             }
 
-            // Move rigidbody
-            Rigidbody2D.MovePosition(newPosition);
+            if (canMove)
+            {
+                // Move rigidbody
+                Rigidbody2D.MovePosition(newPosition);
+            }
 
             // Handle hit timer
             HandleHitTimer();
+
+            HandlePlayerScore();
+        }
+
+        private void HandlePlayerScore()
+        {
+            if (GameManager.State != MiniGameManagerState.TimerRunning)
+                return;
+
+            if (!canMove)
+            {
+                canMove = true;
+            }
+
+            ScoreKeeper.instance.AddScore(this.PlayerID, 1);
         }
 
         // Hit timer for flashing player sprite, as well as disabling player collision
@@ -126,6 +148,7 @@ namespace MiniGameCollection.Games2025.Team05
             if (collision.gameObject.GetComponent<TagScorebar>() != null)
             {
                 Component component = collision.gameObject.GetComponent<TagScorebar>();
+                ScoreKeeper.AddScore(this.PlayerID, 500);
 
             }
         }
